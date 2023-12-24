@@ -1,5 +1,8 @@
+import { PrismaClient } from "@prisma/client";
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+
+const prisma = new PrismaClient();
 
 export const authOptions: NextAuthOptions = {
    session: {
@@ -9,9 +12,10 @@ export const authOptions: NextAuthOptions = {
       CredentialsProvider({
          name: "Sign in",
          credentials: {
-            email_address: {
-               label: "Email",
+            matricNumber: {
+               label: "Matric Number",
                type: "text",
+               placeholder: "Enter Your Matric Number",
             },
             password: {
                label: "Password",
@@ -19,23 +23,46 @@ export const authOptions: NextAuthOptions = {
             },
          },
          async authorize(credentials) {
-            if (!credentials?.email_address || !credentials?.password) {
+            // Handle Auth
+            if (!credentials?.matricNumber || !credentials?.password) {
                return null;
             }
-            const user = {
-               id: "1",
-               name: "John Doe",
-               email: credentials?.email_address,
-            };
-            return user;
+            const student = await prisma.student.findUnique({
+               where: {
+                  matricNumber: credentials.matricNumber,
+               },
+            });
+            if (!student) {
+               return null;
+            }
+            return student;
          },
       }),
    ],
 
    callbacks: {
       session: async ({ session, token }) => {
-         // if (token && typeof token.id === "string") {
-         // }
+         if (token && typeof token.id === "string") {
+            const student = await prisma.student.findUnique({
+               where: {
+                  id: token.id,
+               },
+            });
+            if (student) {
+               const student_data = {
+                  id: token.id,
+                  name:
+                     student.firstName +
+                     " " +
+                     student.lastName +
+                     " " +
+                     student?.otherName,
+                  matric_number: student.matricNumber,
+                  email: student.email,
+               };
+               session.user = student_data;
+            }
+         }
          return session;
       },
 
