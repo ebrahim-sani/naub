@@ -1,8 +1,3 @@
-import React from "react";
-import { SiVercel } from "react-icons/si";
-import { SiGmail } from "react-icons/si";
-import { FaCloud } from "react-icons/fa";
-
 export const accounts = [
    {
       label: "Alicia Koch",
