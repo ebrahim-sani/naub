@@ -19,7 +19,7 @@ export default async function RootLayout({
    return (
       <html lang="en">
          <SessionProvider session={session}>
-            <body className="">
+            <body className="flex h-screen w-screen overflow-hidden">
                <ThemeProvider
                   attribute="class"
                   defaultTheme="system"
