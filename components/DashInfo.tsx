@@ -2,13 +2,11 @@ import { cn } from "@/lib/utils";
 import { InfoCard } from "./InfoCard";
 import { CGPCard } from "./CGP";
 import { CardTemplate } from "./Card";
-import { Calender } from "./Calender";
 import { CurrentRegCourses } from "./CurrCourseTable";
-import { ScrollArea } from "./ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { PersonalInfo } from "./PersonalInfo";
 
-function DemoContainer({
+function GridContainer({
    className,
    ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
@@ -23,27 +21,30 @@ function DemoContainer({
    );
 }
 
-export default async function DashInfo() {
-   const res = await fetch("/api/get-student", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-   });
-   let student;
-   if (res.ok) {
-      student = await res.json();
+async function getData() {
+   const res = await fetch("/api/get-student");
+
+   if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error("Failed to fetch data");
    }
+   return res.json();
+}
+
+export default async function DashInfo() {
+   const student = await getData();
 
    return (
       <>
          <div className="flex flex-col items-start w-full gap-3 h-full">
             <div className="items-start justify-center gap-3 rounded-lg md:grid lg:grid-cols-2 xl:grid-cols-11 w-full">
-               <DemoContainer className="col-span-5">
+               <GridContainer className="col-span-5">
                   <InfoCard student={student} />
-               </DemoContainer>
-               <DemoContainer className="col-span-2">
+               </GridContainer>
+               <GridContainer className="col-span-2">
                   <CGPCard />
-               </DemoContainer>
-               <DemoContainer className="col-span-4">
+               </GridContainer>
+               <GridContainer className="col-span-4">
                   <CardTemplate title="Team Members">
                      <div className="flex items-center justify-between space-x-4">
                         <div className="flex items-center space-x-4">
@@ -62,25 +63,25 @@ export default async function DashInfo() {
                         </div>
                      </div>
                   </CardTemplate>
-               </DemoContainer>
+               </GridContainer>
             </div>
             <div className="flex flex-col lg:flex-row items-start justify-between gap-3 w-full h-full">
-               <DemoContainer className="flex flex-col flex-1 w-full h-full">
+               <GridContainer className="flex flex-col flex-1 w-full h-full">
                   <CardTemplate
                      title="Personal Information"
                      className="flex flex-col h-full"
                   >
                      <PersonalInfo student={student} />
                   </CardTemplate>
-               </DemoContainer>
-               <DemoContainer className="flex flex-col flex-1 w-full h-full">
+               </GridContainer>
+               <GridContainer className="flex flex-col flex-1 w-full h-full">
                   <CardTemplate
                      title="Current Session"
                      className="flex flex-col h-full w-full"
                   >
                      <CurrentRegCourses />
                   </CardTemplate>
-               </DemoContainer>
+               </GridContainer>
             </div>
          </div>
       </>
