@@ -14,26 +14,10 @@ export default async function RootLayout({
 }: {
    children: React.ReactNode;
 }) {
-   const layout = cookies().get("react-resizable-panels:layout");
-   const collapsed = cookies().get("react-resizable-panels:collapsed");
-
-   const defaultLayout = layout ? JSON.parse(layout.value) : undefined;
-   const defaultCollapsed =
-      collapsed && collapsed.value !== undefined
-         ? JSON.parse(collapsed.value)
-         : undefined;
-
    return (
       <html lang="en">
          <body className="relative flex h-screen w-screen overflow-hidden">
-            <Layout
-               accounts={accounts}
-               defaultLayout={defaultLayout}
-               defaultCollapsed={defaultCollapsed}
-               navCollapsedSize={4}
-            >
-               {children}
-            </Layout>
+            <Layout accounts={accounts}>{children}</Layout>
          </body>
       </html>
    );

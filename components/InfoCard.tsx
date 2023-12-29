@@ -7,7 +7,7 @@ export function InfoCard({ student }: { student: StudentProps }) {
       <Card>
          <CardContent className="grid gap-6 pt-6">
             <div className="flex items-center justify-between space-x-4">
-               <div className="flex items-center space-x-4">
+               <div className="flex flex-col lg:flex-row items-center space-x-4">
                   <Avatar className="h-[120px] w-[120px]">
                      <AvatarImage src="https://github.com/shadcn.png" />
                      <AvatarFallback>OM</AvatarFallback>
@@ -37,7 +37,13 @@ export function InfoCard({ student }: { student: StudentProps }) {
    );
 }
 
-function CardItem({ title, info }: { title: string; info: string }) {
+function CardItem({
+   title,
+   info,
+}: {
+   title: string | undefined;
+   info: string | undefined;
+}) {
    return (
       <div className="flex items-center gap-1">
          <p className="text-sm font-medium leading-none">{title}</p>

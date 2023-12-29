@@ -1,9 +1,11 @@
-import Main from "@/components/Main";
-import { cookies } from "next/headers";
+import DashInfo from "@/components/DashInfo";
 
 export default function Dashboard() {
-   const layout = cookies().get("react-resizable-panels:layout");
-   const defaultLayout = layout ? JSON.parse(layout.value) : undefined;
-
-   return <Main defaultLayout={defaultLayout} />;
+   return (
+      <main className="flex flex-col h-screen w-full">
+         <div className="flex flex-1 w-full px-4 py-2">
+            <DashInfo />
+         </div>
+      </main>
+   );
 }

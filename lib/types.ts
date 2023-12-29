@@ -6,7 +6,7 @@ const Student = z.object({
    firstName: z.string(),
    lastName: z.string(),
    otherName: z.string().nullable(),
-   isStudent: z.string(),
+   isStudent: z.boolean(),
    department: z.string(),
    programme: z.string(),
    faculty: z.string(),
@@ -40,7 +40,7 @@ const Student = z.object({
 
 const RegisterCourse = z.object({
    id: z.string(),
-   registeredTime: z.string(),
+   registeredTime: z.date(),
    studentId: z.string().nullable(),
    semester: z.string(),
    session: z.string(),
@@ -73,7 +73,10 @@ const Course = z.object({
    departmentId: z.string().nullable(),
 });
 
-export type StudentProps = z.infer<typeof Student>;
-export type CourseRegProps = z.infer<typeof CourseRegisteration>;
-export type CourseProps = z.infer<typeof Course>;
-export type RegCourseProps = z.infer<typeof RegisterCourse>;
+export type StudentProps = z.infer<typeof Student> | null | undefined;
+export type CourseRegProps =
+   | z.infer<typeof CourseRegisteration>
+   | null
+   | undefined;
+export type CourseProps = z.infer<typeof Course> | null | undefined;
+export type RegCourseProps = z.infer<typeof RegisterCourse> | null | undefined;

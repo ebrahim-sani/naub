@@ -1,26 +1,13 @@
 "use client";
 import * as React from "react";
-import {
-   LayoutDashboard,
-   FilePlus2,
-   Settings,
-   HelpCircle,
-   GraduationCap,
-   ScrollText,
-   FileStack,
-} from "lucide-react";
 
-import { cn } from "@/lib/utils";
-import { TooltipProvider } from "./ui/tooltip";
-import {
-   ResizableHandle,
-   ResizablePanel,
-   ResizablePanelGroup,
-} from "./ui/resizable";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 import { Separator } from "./ui/separator";
 import { AccountSwitcher } from "./account-switcher";
 import { Nav } from "./sidebar";
+import { usePathname } from "next/navigation";
+import { GroupOneNav, GroupTwoNav } from "@/constant/data";
 
 interface LayoutProps {
    accounts: {
@@ -28,120 +15,49 @@ interface LayoutProps {
       email: string;
       icon?: React.ReactNode;
    }[];
-   defaultLayout: number[] | undefined;
-   defaultCollapsed?: boolean;
-   navCollapsedSize: number;
    children: React.ReactNode;
 }
 
-export function Layout({
-   accounts,
-   defaultLayout = [265, 440, 655],
-   defaultCollapsed = false,
-   navCollapsedSize,
-   children,
-}: LayoutProps) {
-   const [isCollapsed, setIsCollapsed] = React.useState(defaultCollapsed);
+export function Layout({ accounts, children }: LayoutProps) {
+   const pathname = usePathname();
+   // console.log(pathname);
 
+   const formatedPathname = (path: string) => {
+      const split_url = path.split("/");
+      const lastIndex = split_url.length - 1;
+      const pathname = split_url[lastIndex].replace("-", " ");
+      const formatName = pathname.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
+         letter.toUpperCase(),
+      );
+      return formatName;
+   };
    return (
-      <TooltipProvider delayDuration={0}>
-         <ResizablePanelGroup
-            direction="horizontal"
-            onLayout={(sizes: number[]) => {
-               document.cookie = `react-resizable-panels:layout=${JSON.stringify(
-                  sizes,
-               )}`;
-            }}
-            className="flex h-screen items-stretch overflow-hidden"
-         >
-            {/* sidebar */}
-            <ResizablePanel
-               defaultSize={defaultLayout[0]}
-               collapsedSize={navCollapsedSize}
-               collapsible={true}
-               minSize={15}
-               maxSize={20}
-               // @ts-ignore
-               onCollapse={(collapsed) => {
-                  setIsCollapsed(collapsed);
-                  document.cookie = `react-resizable-panels:collapsed=${JSON.stringify(
-                     collapsed,
-                  )}`;
-               }}
-               className={cn(
-                  isCollapsed &&
-                     "fixed left-0 top-0 h-screen min-w-[50px] transition-all duration-300 ease-in-out",
-               )}
-            >
-               <div
-                  className={cn(
-                     "flex h-[52px] items-center justify-center",
-                     isCollapsed ? "h-[52px]" : "px-2",
-                  )}
-               >
-                  <AccountSwitcher
-                     isCollapsed={isCollapsed}
-                     accounts={accounts}
-                  />
+      <div className="flex h-full items-start w-screen">
+         <div className="hidden lg:flex flex-col items-start h-screen w-[18%] transition-all duration-300 ease-in-out">
+            <div className="flex h-[52px] items-center justify-center px-2 my-[2px] w-full">
+               <AccountSwitcher accounts={accounts} />
+            </div>
+            <Separator />
+            <Nav links={GroupOneNav} />
+            <Separator />
+            <Nav links={GroupTwoNav} />
+         </div>
+         <div className="flex flex-col items-start gap-2 w-full">
+            <div className="flex items-center justify-between px-4 py-1 w-full">
+               <h1 className="text-lg font-bold">
+                  {formatedPathname(pathname)}
+               </h1>
+
+               <div className="ml-auto">
+                  <Avatar>
+                     <AvatarImage src="https://github.com/shadcn.png" />
+                     <AvatarFallback>CN</AvatarFallback>
+                  </Avatar>
                </div>
-               <Separator />
-               <Nav
-                  isCollapsed={isCollapsed}
-                  links={[
-                     {
-                        title: "Dashboard",
-                        label: "",
-                        icon: LayoutDashboard,
-                        variant: "default",
-                     },
-                     {
-                        title: "Course Registration",
-                        label: "",
-                        icon: FilePlus2,
-                        variant: "ghost",
-                     },
-                     {
-                        title: "Results",
-                        label: "",
-                        icon: ScrollText,
-                        variant: "ghost",
-                     },
-                     {
-                        title: "Documents",
-                        label: "",
-                        icon: FileStack,
-                        variant: "ghost",
-                     },
-                  ]}
-               />
-               <Separator />
-               <Nav
-                  isCollapsed={isCollapsed}
-                  links={[
-                     {
-                        title: "E-Learn",
-                        label: "",
-                        icon: GraduationCap,
-                        variant: "ghost",
-                     },
-                     {
-                        title: "Help",
-                        label: "",
-                        icon: HelpCircle,
-                        variant: "ghost",
-                     },
-                     {
-                        title: "Settings",
-                        label: "",
-                        icon: Settings,
-                        variant: "ghost",
-                     },
-                  ]}
-               />
-            </ResizablePanel>
-            <ResizableHandle withHandle />
+            </div>
+            <Separator />
             {children}
-         </ResizablePanelGroup>
-      </TooltipProvider>
+         </div>
+      </div>
    );
 }

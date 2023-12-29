@@ -13,6 +13,7 @@ export async function GET(req: Request) {
       const session = await getServerSession(authOptions);
       const student = await prisma.student.findUnique({
          where: { id: session?.user.id },
+         include: { coursesRegistered: { include: { courses: true } } },
       });
       if (!student) {
          return new Response("", { status: 404 });

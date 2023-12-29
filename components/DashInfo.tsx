@@ -5,6 +5,8 @@ import { CardTemplate } from "./Card";
 import { CurrentRegCourses } from "./CurrCourseTable";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { PersonalInfo } from "./PersonalInfo";
+import { getStudent } from "@/utils/dataFetch";
+import { StudentProps } from "@/lib/types";
 
 function GridContainer({
    className,
@@ -21,18 +23,8 @@ function GridContainer({
    );
 }
 
-async function getData() {
-   const res = await fetch("/api/get-student");
-
-   if (!res.ok) {
-      // This will activate the closest `error.js` Error Boundary
-      throw new Error("Failed to fetch data");
-   }
-   return res.json();
-}
-
 export default async function DashInfo() {
-   const student = await getData();
+   const student: StudentProps = await getStudent();
 
    return (
       <>
