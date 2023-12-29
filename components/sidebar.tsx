@@ -33,14 +33,14 @@ export function Nav({ links }: NavProps) {
                         size: "sm",
                      }),
                      link.pathname === pathname
-                        ? "bg-primary text-white"
+                        ? "bg-primary bg-opacity-70 text-gray-100"
                         : "dark:bg-muted dark:text-gray-600 dark:hover:bg-muted dark:hover:text-gray-500",
                      "justify-start",
                   )}
                >
                   <link.icon
                      className={`mr-2 h-4 w-4 text ${
-                        link.pathname === pathname && "text-white"
+                        link.pathname === pathname && "text-gray-100"
                      }`}
                   />
                   {link.title}

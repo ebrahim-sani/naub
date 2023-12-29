@@ -6,13 +6,17 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export async function getStudent() {
-   const session = await getServerSession(authOptions);
-   const student: StudentProps = await prisma.student.findUnique({
-      where: { id: session?.user.id },
-      include: { coursesRegistered: { include: { courses: true } } },
-   });
-   if (!student) {
-      console.log("Failed to fetch student");
+   let student: StudentProps;
+   try {
+      const session = await getServerSession(authOptions);
+      student = await prisma.student.findUnique({
+         where: { id: session?.user.id },
+         include: { coursesRegistered: { include: { courses: true } } },
+      });
+   } catch (e) {
+      console.log(e);
+   } finally {
+      await prisma.$disconnect();
    }
    return student;
 }

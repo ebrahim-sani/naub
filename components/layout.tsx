@@ -42,7 +42,7 @@ export function Layout({ accounts, children }: LayoutProps) {
             <Separator />
             <Nav links={GroupTwoNav} />
          </div>
-         <div className="flex flex-col items-start gap-2 w-full">
+         <div className="flex flex-col items-start gap-2 h-full w-full">
             <div className="flex items-center justify-between px-4 py-1 w-full">
                <h1 className="text-lg font-bold">
                   {formatedPathname(pathname)}
