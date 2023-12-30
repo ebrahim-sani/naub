@@ -1,3 +1,5 @@
+import { CourseProps } from "@/lib/types";
+
 export const departments = [
    {
       departmentName: "Software Engineering",
@@ -37,7 +39,7 @@ export const courses = [
       preReq: "SWE221",
    },
    {
-      courseCode: "CSC101",
+      courseCode: "CSC1019",
       courseTitle: "Introduction to Computer Science",
       department: "Computer Science",
       level: "100",
@@ -64,7 +66,7 @@ export const courses = [
       preReq: "PHY201",
    },
    {
-      courseCode: "ENG401",
+      courseCode: "ENG409",
       courseTitle: "Advanced English Composition",
       department: "English",
       level: "400",
@@ -100,8 +102,8 @@ export const courses = [
       preReq: null,
    },
    {
-      courseCode: "SOC401",
-      courseTitle: "Sociological Theory",
+      courseCode: "SOC319",
+      courseTitle: "Sociological Theory I",
       department: "Sociology",
       level: "400",
       unit: "3",
@@ -109,7 +111,7 @@ export const courses = [
       preReq: "SOC301",
    },
    {
-      courseCode: "BIO203",
+      courseCode: "BIO209",
       courseTitle: "Genetics I",
       department: "Biology",
       level: "200",
@@ -127,7 +129,7 @@ export const courses = [
       preReq: "ART201",
    },
    {
-      courseCode: "MUS401",
+      courseCode: "MUS409",
       courseTitle: "Music Composition I",
       department: "Music",
       level: "400",
@@ -145,7 +147,7 @@ export const courses = [
       preReq: "HIS101",
    },
    {
-      courseCode: "POL303",
+      courseCode: "POL309",
       courseTitle: "International Relations I",
       department: "Political Science",
       level: "300",
@@ -154,7 +156,7 @@ export const courses = [
       preReq: "POL201",
    },
    {
-      courseCode: "PHI401",
+      courseCode: "PHI409",
       courseTitle: "Philosophical Ethics I",
       department: "Philosophy",
       level: "400",
@@ -163,7 +165,7 @@ export const courses = [
       preReq: "PHI301",
    },
    {
-      courseCode: "GEO201",
+      courseCode: "GEO209",
       courseTitle: "Geography of Cities I",
       department: "Geography",
       level: "200",
@@ -172,7 +174,7 @@ export const courses = [
       preReq: "GEO101",
    },
    {
-      courseCode: "BUS302",
+      courseCode: "BUS309",
       courseTitle: "Business Ethics I",
       department: "Business",
       level: "300",
@@ -190,7 +192,7 @@ export const courses = [
       preReq: null,
    },
    {
-      courseCode: "ARC401",
+      courseCode: "ARC409",
       courseTitle: "Architectural Design I",
       department: "Architecture",
       level: "400",
@@ -199,7 +201,7 @@ export const courses = [
       preReq: "ARC301",
    },
    {
-      courseCode: "EDU301",
+      courseCode: "EDU309",
       courseTitle: "Educational Psychology I",
       department: "Education",
       level: "300",
@@ -208,7 +210,7 @@ export const courses = [
       preReq: "EDU201",
    },
    {
-      courseCode: "ENV201",
+      courseCode: "ENV209",
       courseTitle: "Environmental Science I",
       department: "Environmental Science",
       level: "200",
@@ -217,7 +219,7 @@ export const courses = [
       preReq: null,
    },
    {
-      courseCode: "LING401",
+      courseCode: "LING409",
       courseTitle: "Linguistics I",
       department: "Linguistics",
       level: "400",
@@ -244,7 +246,7 @@ export const courses = [
       preReq: "NUR201",
    },
    {
-      courseCode: "PHARM401",
+      courseCode: "PHARM409",
       courseTitle: "Pharmacology",
       department: "Pharmacy",
       level: "400",
@@ -253,7 +255,7 @@ export const courses = [
       preReq: "PHARM301",
    },
    {
-      courseCode: "RAD201",
+      courseCode: "RAD209",
       courseTitle: "Radiology Techniques",
       department: "Radiology",
       level: "200",
@@ -262,7 +264,7 @@ export const courses = [
       preReq: "RAD101",
    },
    {
-      courseCode: "SOC202",
+      courseCode: "SOC209",
       courseTitle: "Social Problems",
       department: "Sociology",
       level: "200",
@@ -271,7 +273,7 @@ export const courses = [
       preReq: "SOC101",
    },
    {
-      courseCode: "SWK401",
+      courseCode: "SWK409",
       courseTitle: "Social Work Practice",
       department: "Social Work",
       level: "400",
@@ -280,7 +282,7 @@ export const courses = [
       preReq: "SWK301",
    },
    {
-      courseCode: "THE301",
+      courseCode: "THE309",
       courseTitle: "Theatre Arts",
       department: "Theatre Arts",
       level: "300",
@@ -289,7 +291,7 @@ export const courses = [
       preReq: "THE201",
    },
    {
-      courseCode: "AGR202",
+      courseCode: "AGR209",
       courseTitle: "Agricultural Economics",
       department: "Agricultural Economics",
       level: "200",
@@ -298,7 +300,7 @@ export const courses = [
       preReq: "AGR101",
    },
    {
-      courseCode: "BIO401",
+      courseCode: "BIO409",
       courseTitle: "Advanced Biology",
       department: "Biology",
       level: "400",
@@ -307,7 +309,7 @@ export const courses = [
       preReq: "BIO301",
    },
    {
-      courseCode: "CHM201",
+      courseCode: "CHM209",
       courseTitle: "Inorganic Chemistry",
       department: "Chemistry",
       level: "200",
@@ -316,7 +318,7 @@ export const courses = [
       preReq: "CHM101",
    },
    {
-      courseCode: "ECO402",
+      courseCode: "ECO409",
       courseTitle: "Microeconomics",
       department: "Economics",
       level: "400",
@@ -325,7 +327,7 @@ export const courses = [
       preReq: "ECO301",
    },
    {
-      courseCode: "PSY301",
+      courseCode: "PSY309",
       courseTitle: "Cognitive Psychology",
       department: "Psychology",
       level: "300",
@@ -334,8 +336,8 @@ export const courses = [
       preReq: "PSY201",
    },
    {
-      courseCode: "SOC301",
-      courseTitle: "Sociology of Family",
+      courseCode: "SOC329",
+      courseTitle: "Sociology of Family II",
       department: "Sociology",
       level: "300",
       unit: "3",
@@ -343,7 +345,7 @@ export const courses = [
       preReq: "SOC201",
    },
    {
-      courseCode: "BIO202",
+      courseCode: "BIO299",
       courseTitle: "Genetics II",
       department: "Biology",
       level: "200",
@@ -352,7 +354,7 @@ export const courses = [
       preReq: "BIO101",
    },
    {
-      courseCode: "ART302",
+      courseCode: "ART309",
       courseTitle: "Art History II",
       department: "Art",
       level: "300",
@@ -361,7 +363,7 @@ export const courses = [
       preReq: "ART201",
    },
    {
-      courseCode: "MUS402",
+      courseCode: "MUS419",
       courseTitle: "Music Composition II",
       department: "Music",
       level: "400",
@@ -370,7 +372,7 @@ export const courses = [
       preReq: "MUS301",
    },
    {
-      courseCode: "HIS202",
+      courseCode: "HIS299",
       courseTitle: "World History II",
       department: "History",
       level: "200",
@@ -379,7 +381,7 @@ export const courses = [
       preReq: "HIS101",
    },
    {
-      courseCode: "POL302",
+      courseCode: "POL319",
       courseTitle: "International Relations II",
       department: "Political Science",
       level: "300",
@@ -388,7 +390,7 @@ export const courses = [
       preReq: "POL201",
    },
    {
-      courseCode: "PHI402",
+      courseCode: "PHI419",
       courseTitle: "Philosophical Ethics II",
       department: "Philosophy",
       level: "400",
@@ -396,67 +398,20 @@ export const courses = [
       courseStatus: "C",
       preReq: "PHI301",
    },
-   {
-      courseCode: "GEO202",
-      courseTitle: "Geography of Cities II",
-      department: "Geography",
-      level: "200",
-      unit: "3",
-      courseStatus: "C",
-      preReq: "GEO101",
-   },
-   {
-      courseCode: "BUS301",
-      courseTitle: "Business Ethics II",
-      department: "Business",
-      level: "300",
-      unit: "3",
-      courseStatus: "C",
-      preReq: "BUS201",
-   },
-   {
-      courseCode: "ANT202",
-      courseTitle: "Cultural Anthropology II",
-      department: "Anthropology",
-      level: "200",
-      unit: "3",
-      courseStatus: "C",
-      preReq: null,
-   },
-   {
-      courseCode: "ARC402",
-      courseTitle: "Architectural Design II",
-      department: "Architecture",
-      level: "400",
-      unit: "3",
-      courseStatus: "C",
-      preReq: "ARC301",
-   },
-   {
-      courseCode: "EDU302",
-      courseTitle: "Educational Psychology II",
-      department: "Education",
-      level: "300",
-      unit: "3",
-      courseStatus: "C",
-      preReq: "EDU201",
-   },
-   {
-      courseCode: "ENV202",
-      courseTitle: "Environmental Science II",
-      department: "Environmental Science",
-      level: "200",
-      unit: "3",
-      courseStatus: "C",
-      preReq: null,
-   },
-   {
-      courseCode: "LING402",
-      courseTitle: "Linguistics II",
-      department: "Linguistics",
-      level: "400",
-      unit: "3",
-      courseStatus: "C",
-      preReq: "LING301",
-   },
 ];
+
+export function checkForDuplicates(courseList: any) {
+   const courseCodes = new Set();
+   const duplicates: [] = [];
+
+   courseList.forEach((course: CourseProps) => {
+      if (courseCodes.has(course?.courseCode)) {
+         // @ts-ignore
+         duplicates.push(course?.courseCode);
+      } else {
+         courseCodes.add(course?.courseCode);
+      }
+   });
+
+   return duplicates;
+}

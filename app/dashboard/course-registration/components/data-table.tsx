@@ -94,7 +94,7 @@ export async function DataTable<TData, TValue>({
                   ))}
                </TableHeader>
                <TableBody>
-                  {table.getRowModel().rows?.length ? (
+                  {table?.getRowModel().rows?.length ? (
                      table.getRowModel().rows.map((row) => (
                         <TableRow
                            key={row.id}
@@ -114,7 +114,7 @@ export async function DataTable<TData, TValue>({
                      <TableRow>
                         <TableCell
                            colSpan={columns.length}
-                           className="h-24 text-center"
+                           className="h-full text-center"
                         >
                            No results.
                         </TableCell>

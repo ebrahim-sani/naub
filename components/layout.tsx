@@ -26,9 +26,12 @@ export function Layout({ accounts, children }: LayoutProps) {
       const split_url = path.split("/");
       const lastIndex = split_url.length - 1;
       const pathname = split_url[lastIndex].replace("-", " ");
-      const formatName = pathname.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
+      let formatName = pathname.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
          letter.toUpperCase(),
       );
+      if (formatName === "New") {
+         formatName = "Course Registration";
+      }
       return formatName;
    };
    return (

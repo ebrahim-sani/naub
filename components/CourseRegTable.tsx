@@ -1,7 +1,4 @@
-"use client";
-
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
-import { CourseRegDialog } from "@/components/CourseRegDialog";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -16,27 +13,8 @@ import {
 import { cn } from "@/lib/utils";
 import { ArrowLeft, FilePlus2, TrendingUpIcon } from "lucide-react";
 import Link from "next/link";
-import { useRef } from "react";
 
 export default function CourseRegTable({ course_reg }: any) {
-   const dialogRef = useRef<HTMLButtonElement | null>(null);
-
-   const handleClick = () => {
-      if (dialogRef.current) {
-         dialogRef.current.click();
-      }
-   };
-
-   // if (dialogRef.current) {
-   //    dialogRef.current.addEventListener("click", handleClick);
-   // }
-
-   // const cleanup = () => {
-   //    if (dialogRef.current) {
-   //       dialogRef.current.removeEventListener("click", handleClick);
-   //    }
-   // };
-
    return (
       <>
          <div className="flex flex-1 flex-col h-full mb-2 px-3 py-2 border rounded-lg w-full gap-2">
@@ -54,14 +32,12 @@ export default function CourseRegTable({ course_reg }: any) {
                   placeholder="Find course reg..."
                   className="h-8 w-[150px] lg:w-[250px]"
                />
-               <Button
-                  onClick={handleClick}
-                  variant="default"
-                  className="h-8 px-2 lg:px-3"
-               >
-                  New Registration
-                  <FilePlus2 className="ml-2 h-4 w-4" />
-               </Button>
+               <Link href="/dashboard/course-registration/new">
+                  <Button variant="default" className="h-8 px-2 lg:px-3">
+                     New Registration
+                     <FilePlus2 className="ml-2 h-4 w-4" />
+                  </Button>
+               </Link>
             </div>
             <ScrollArea className="h-[84%]">
                <Table>
@@ -103,12 +79,6 @@ export default function CourseRegTable({ course_reg }: any) {
                </Table>
             </ScrollArea>
          </div>
-         <Dialog>
-            <DialogTrigger asChild ref={dialogRef}>
-               <div />
-            </DialogTrigger>
-            <CourseRegDialog />
-         </Dialog>
       </>
    );
 }

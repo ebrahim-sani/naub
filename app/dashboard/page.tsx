@@ -7,6 +7,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { PersonalInfo } from "@/components/PersonalInfo";
 import { CurrentRegCourses } from "@/components/CurrCourseTable";
 import { cn } from "@/lib/utils";
+import { authOptions } from "@/lib/auth";
+import { getServerSession } from "next-auth";
 
 function GridContainer({
    className,
@@ -24,7 +26,8 @@ function GridContainer({
 }
 
 export default async function Dashboard() {
-   const student: StudentProps = await getStudent();
+   const session = await getServerSession(authOptions);
+   const student: StudentProps = await getStudent(session?.user.id);
 
    return (
       <main className="flex flex-col h-screen w-full">
