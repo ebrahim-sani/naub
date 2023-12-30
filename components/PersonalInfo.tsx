@@ -21,7 +21,13 @@ export function PersonalInfo({ student }: { student: StudentProps }) {
    );
 }
 
-function InfoCard({ title, info }: { title: string; info: string | null }) {
+function InfoCard({
+   title,
+   info,
+}: {
+   title: string;
+   info: string | null | undefined;
+}) {
    return (
       <div className="flex flex-col items-start gap-2">
          <p className="text-sm font-medium leading-none">{title}</p>
