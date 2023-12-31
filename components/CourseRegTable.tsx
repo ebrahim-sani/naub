@@ -9,7 +9,7 @@ import {
    TableHeader,
    TableRow,
 } from "@/components/ui/table";
-import { FilePlus2 } from "lucide-react";
+import { FilePlus2, ScrollText } from "lucide-react";
 import Link from "next/link";
 import { RegCourseProps } from "@/lib/types";
 
@@ -45,7 +45,8 @@ export default function CourseRegTable({ course_reg }: { course_reg: any[] }) {
                         <TableHead>Semester</TableHead>
                         <TableHead>Level</TableHead>
                         <TableHead>Units</TableHead>
-                        <TableHead className="text-right">Session</TableHead>
+                        <TableHead>Session</TableHead>
+                        <TableHead className="text-right"></TableHead>
                      </TableRow>
                   </TableHeader>
 
@@ -67,8 +68,17 @@ export default function CourseRegTable({ course_reg }: { course_reg: any[] }) {
                                     <TableCell>{reg?.semester}</TableCell>
                                     <TableCell>{reg?.level}</TableCell>
                                     <TableCell>{totalUnit(reg)}</TableCell>
+                                    <TableCell>{reg?.session}</TableCell>
                                     <TableCell className="text-right">
-                                       {reg?.session}
+                                       <Button
+                                          // onClick=""
+                                          variant="outline"
+                                          size="sm"
+                                          className="ml-auto h-8"
+                                       >
+                                          <ScrollText className="mr-1 h-4 w-5" />
+                                          Downoload
+                                       </Button>
                                     </TableCell>
                                  </TableRow>
                               ))}

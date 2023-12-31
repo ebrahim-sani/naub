@@ -5,40 +5,12 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { DataTableColumnHeader } from "./data-table-column-header";
 import { CourseProps } from "@/lib/types";
 import { useCourseStore } from "@/lib/states/course-reg-state";
+import CheckboxCell from "./checkboxcell";
 
-export const Columns: ColumnDef<CourseProps>[] = [
+export const columns: ColumnDef<CourseProps>[] = [
    {
       id: "id",
-      cell: ({ row, cell }) => {
-         const { addCourse, courses, removeCourse } = useCourseStore();
-
-         return (
-            <Checkbox
-               checked={row.getIsSelected()}
-               onCheckedChange={(value) => {
-                  row.toggleSelected(!!value);
-                  // Na where you'll be working tomorrow!!
-                  const selectedCourse = cell.row.original;
-
-                  if (
-                     !courses.some((course) => course.id === selectedCourse?.id)
-                  ) {
-                     // @ts-ignore
-                     addCourse(selectedCourse);
-                  }
-
-                  if (
-                     courses.some((course) => course.id === selectedCourse?.id)
-                  ) {
-                     // @ts-ignore
-                     removeCourse(selectedCourse?.courseCode);
-                  }
-               }}
-               aria-label="Select row"
-               className="translate-y-[2px]"
-            />
-         );
-      },
+      cell: CheckboxCell,
       enableSorting: false,
       enableHiding: false,
    },
