@@ -8,9 +8,8 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
 export default function NewCourseRegHeader() {
-   const { courses } = useCourseStore();
-   const { semester } = useSemesterStore();
-   // console.log(courses);
+   const { courses, reset } = useCourseStore();
+   const { semester, clearSemester } = useSemesterStore();
 
    const router = useRouter();
 
@@ -25,9 +24,15 @@ export default function NewCourseRegHeader() {
                session: "2023/2024",
             }),
          });
+
+         if (res.status === 400) {
+            toast.error("No semester selected!");
+         }
          if (res.ok) {
             toast.success("Registration successful");
             router.push("/dashboard/course-registration");
+            reset();
+            clearSemester();
          }
       } catch (e) {
          console.log("Failed to save data", e);

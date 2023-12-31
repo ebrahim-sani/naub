@@ -16,6 +16,7 @@ interface CourseStore {
    courses: Course[];
    addCourse: (course: Course) => void;
    removeCourse: (courseCode: string) => void;
+   reset: () => void;
 }
 
 export const useCourseStore = create<CourseStore>((set) => ({
@@ -28,4 +29,5 @@ export const useCourseStore = create<CourseStore>((set) => ({
             (course) => course.courseCode !== courseCode,
          ),
       })),
+   reset: () => set({ courses: [] }),
 }));

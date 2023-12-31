@@ -17,6 +17,12 @@ export async function POST(req: Request) {
    const level = student?.level;
    const { session, semester, courses } = await req.json();
 
+   if (semester === "") {
+      return new Response(JSON.stringify("Bad Request: No semester"), {
+         status: 400,
+      });
+   }
+
    if (studentId && level) {
       try {
          await prisma.registerCourse.create({

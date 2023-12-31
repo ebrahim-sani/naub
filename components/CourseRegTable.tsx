@@ -84,11 +84,11 @@ export default function CourseRegTable({ course_reg }: { course_reg: any[] }) {
                               ))}
                         </>
                      ) : (
-                        <TableCell className="h-full text-center">
-                           <p className="text-muted-foreground">
+                        <TableRow>
+                           <TableCell className="h-full text-center">
                               No registration yet!
-                           </p>
-                        </TableCell>
+                           </TableCell>
+                        </TableRow>
                      )}
                   </TableBody>
                </Table>
