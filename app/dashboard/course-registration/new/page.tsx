@@ -1,6 +1,6 @@
 import { DataTable } from "@/app/dashboard/course-registration/components/data-table";
 import { CourseProps } from "@/lib/types";
-import { columns } from "@/app/dashboard/course-registration/components/columns";
+import { Columns } from "@/app/dashboard/course-registration/components/columns";
 import { getCourses } from "@/utils/dataFetch";
 import NewCourseRegHeader from "@/components/NewCourseRegHeader";
 
@@ -13,7 +13,7 @@ export default async function page() {
             <NewCourseRegHeader />
             <div className="flex flex-1 items-start space-x-2 w-full">
                <div className="flex h-full flex-1 flex-col space-y-8">
-                  <DataTable data={courses} columns={columns} />
+                  <DataTable data={courses} columns={Columns} />
                </div>
             </div>
          </div>

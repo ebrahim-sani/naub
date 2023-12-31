@@ -6,7 +6,7 @@ import { DataTableColumnHeader } from "./data-table-column-header";
 import { CourseProps } from "@/lib/types";
 import { useCourseStore } from "@/lib/states/course-reg-state";
 
-export const columns: ColumnDef<CourseProps>[] = [
+export const Columns: ColumnDef<CourseProps>[] = [
    {
       id: "id",
       cell: ({ row, cell }) => {
