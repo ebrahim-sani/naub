@@ -79,28 +79,25 @@ model CourseRegisteration {
 }
 
 model Course {
-  id               String      @id @default(uuid())
-  courseCode       String      @unique
-  courseTitle      String      @unique
-  department       String
-  level            String
-  unit             String
-  courseStatus     String
-  preReq           String?
-  departmentCourse Department? @relation(fields: [departmentId], references: [id])
-  departmentId     String?
+  id           String  @id @default(uuid())
+  courseCode   String  @unique
+  courseTitle  String  @unique
+  department   String
+  level        String
+  unit         String
+  courseStatus String
+  preReq       String?
 
   @@index([courseTitle, courseCode])
 }
 
 model Department {
-  id             String   @id @default(uuid())
-  departmentName String   @unique
+  id             String  @id @default(uuid())
+  departmentName String  @unique
   faculty        String
   profilePicture String?
   password       String
-  CoursesCreated Course[]
-  isDepartment   Boolean  @default(true)
+  isDepartment   Boolean @default(true)
 
   @@index([departmentName])
 }

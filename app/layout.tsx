@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import SessionProvider from "@/components/SessionProvider";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
    title: "Create Next App",
@@ -27,6 +28,7 @@ export default async function RootLayout({
                   disableTransitionOnChange
                >
                   {children}
+                  <Toaster position="top-right" closeButton />
                </ThemeProvider>
             </body>
          </SessionProvider>

@@ -29,7 +29,7 @@ export async function getCourses(): Promise<CourseProps[]> {
       return courses;
    } catch (e) {
       console.log("Error fetching courses", e);
-      throw new Error("Failed to fetch student info.");
+      throw new Error("Failed to fetch courses.");
    } finally {
       await prisma.$disconnect();
    }

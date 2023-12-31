@@ -4,34 +4,45 @@ import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
 import { DataTableColumnHeader } from "./data-table-column-header";
 import { CourseProps } from "@/lib/types";
+import { useCourseStore } from "@/lib/states/course-reg-state";
 
 export const columns: ColumnDef<CourseProps>[] = [
    {
-      id: "select",
-      header: ({ table }) => (
-         <Checkbox
-            checked={
-               table.getIsAllPageRowsSelected() ||
-               (table.getIsSomePageRowsSelected() && "indeterminate")
-            }
-            onCheckedChange={(value: any) =>
-               table.toggleAllPageRowsSelected(!!value)
-            }
-            aria-label="Select all"
-            className="translate-y-[2px]"
-         />
-      ),
-      cell: ({ row }) => (
-         <Checkbox
-            checked={row.getIsSelected()}
-            onCheckedChange={(value) => row.toggleSelected(!!value)}
-            aria-label="Select row"
-            className="translate-y-[2px]"
-         />
-      ),
+      id: "id",
+      cell: ({ row, cell }) => {
+         const { addCourse, courses, removeCourse } = useCourseStore();
+
+         return (
+            <Checkbox
+               checked={row.getIsSelected()}
+               onCheckedChange={(value) => {
+                  row.toggleSelected(!!value);
+                  // Na where you'll be working tomorrow!!
+                  const selectedCourse = cell.row.original;
+
+                  if (
+                     !courses.some((course) => course.id === selectedCourse?.id)
+                  ) {
+                     // @ts-ignore
+                     addCourse(selectedCourse);
+                  }
+
+                  if (
+                     courses.some((course) => course.id === selectedCourse?.id)
+                  ) {
+                     // @ts-ignore
+                     removeCourse(selectedCourse?.courseCode);
+                  }
+               }}
+               aria-label="Select row"
+               className="translate-y-[2px]"
+            />
+         );
+      },
       enableSorting: false,
       enableHiding: false,
    },
+
    {
       accessorKey: "courseCode",
       header: ({ column }) => (

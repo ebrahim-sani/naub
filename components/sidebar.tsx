@@ -17,7 +17,8 @@ interface NavProps {
 
 export function Nav({ links }: NavProps) {
    const pathname = usePathname();
-   // console.log(pathname);
+   const new_course_reg_path = "/dashboard/course-registration/new";
+   // console.log(new_course_reg_path);
 
    return (
       <div className="group flex flex-col gap-4 py-2 w-full">
@@ -29,12 +30,13 @@ export function Nav({ links }: NavProps) {
                   className={cn(
                      buttonVariants({
                         variant:
-                           link.pathname === pathname ? "default" : "ghost",
+                           link.pathname === pathname
+                              ? "default"
+                              : link.pathname === new_course_reg_path
+                              ? "default"
+                              : "secondary",
                         size: "sm",
                      }),
-                     link.pathname === pathname
-                        ? "bg-primary bg-opacity-70 text-gray-100"
-                        : "dark:bg-muted dark:text-gray-600 dark:hover:bg-muted dark:hover:text-gray-500",
                      "justify-start",
                   )}
                >

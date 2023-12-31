@@ -29,6 +29,7 @@ export default async function Home() {
    // } finally {
    //    await prisma.$disconnect();
    // }
+
    return (
       <main className="flex min-h-screen flex-col items-center justify-between p-24 w-full">
          <div className="flex items-center gap-3">

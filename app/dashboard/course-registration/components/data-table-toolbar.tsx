@@ -6,6 +6,7 @@ import { Table } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { DataTableViewOptions } from "./data-table-vew-option";
+import { SemesterOption } from "./semester-option";
 
 interface DataTableToolbarProps<TData> {
    table: Table<TData>;
@@ -45,6 +46,7 @@ export function DataTableToolbar<TData>({
             )}
          </div>
          <DataTableViewOptions table={table} />
+         <SemesterOption />
       </div>
    );
 }

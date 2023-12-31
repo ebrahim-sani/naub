@@ -45,7 +45,7 @@ const RegisterCourse = z.object({
    semester: z.string(),
    session: z.string(),
    level: z.string(),
-   courses: z.array(z.lazy(() => CourseRegisteration)),
+   courses: z.array(z.lazy(() => Course)),
 });
 
 const CourseRegisteration = z.object({
@@ -70,7 +70,6 @@ const Course = z.object({
    unit: z.string(),
    courseStatus: z.string(),
    preReq: z.string().nullable(),
-   departmentId: z.string().nullable(),
 });
 
 export type StudentProps = z.infer<typeof Student> | null | undefined;
