@@ -59,6 +59,7 @@ export const authOptions: NextAuthOptions = {
                      student?.otherName,
                   matric_number: student.matricNumber,
                   email: student.email,
+                  role: student.role,
                };
                session.user = student_data;
             }
@@ -74,6 +75,7 @@ export const authOptions: NextAuthOptions = {
             return {
                ...token,
                id: user.id,
+               role: user.role,
                exp: expires,
             };
          }

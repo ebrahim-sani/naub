@@ -12,39 +12,39 @@ export const GroupOneNav = [
    {
       title: "Dashboard",
       icon: LayoutDashboard,
-      pathname: "/dashboard",
+      pathname: "/s/dashboard",
    },
    {
       title: "Course Registration",
       icon: FilePlus2,
-      pathname: "/dashboard/course-registration",
+      pathname: "/s/dashboard/course-registration",
    },
    {
       title: "Results",
       icon: ScrollText,
-      pathname: "/dashboard/results",
+      pathname: "/s/dashboard/results",
    },
    {
       title: "Documents",
       icon: FileStack,
-      pathname: "/dashboard/documents",
+      pathname: "/s/dashboard/documents",
    },
 ];
 
 export const GroupTwoNav = [
    {
       title: "E-Learn",
-      pathname: "/dashboard/e-learn",
+      pathname: "/s/dashboard/e-learn",
       icon: GraduationCap,
    },
    {
       title: "Help",
-      pathname: "/dashboard/help",
+      pathname: "/s/dashboard/help",
       icon: HelpCircle,
    },
    {
       title: "Settings",
-      pathname: "/dashboard/settings",
+      pathname: "/s/dashboard/settings",
       icon: Settings,
    },
 ];

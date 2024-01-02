@@ -1,10 +1,9 @@
 import CourseRegTable from "@/components/CourseRegTable";
 import { authOptions } from "@/lib/auth";
-import { RegCourseProps } from "@/lib/types";
 import { getStudent } from "@/utils/dataFetch";
 import { getServerSession } from "next-auth";
 
-export default async function page() {
+async function page() {
    const session = await getServerSession(authOptions);
    const student = await getStudent(session?.user.id);
    const course_reg: any = student?.coursesRegistered;
@@ -14,3 +13,5 @@ export default async function page() {
       </main>
    );
 }
+
+export default page;

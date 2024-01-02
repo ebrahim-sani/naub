@@ -12,6 +12,12 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
+enum Role {
+  STUDENT
+  ADMIN
+  DEPARTMENT
+}
+
 model Student {
   id                    String  @id @default(uuid())
   matricNumber          String  @unique
@@ -47,6 +53,8 @@ model Student {
   nextOfKinPhoneNumber  String
   nextOfKinRelationship String
   nextOfKinAddress      String
+
+  role Role @default(STUDENT)
 
   coursesRegistered registerCourse[]
 
@@ -98,6 +106,8 @@ model Department {
   profilePicture String?
   password       String
   isDepartment   Boolean @default(true)
+
+  role Role @default(DEPARTMENT)
 
   @@index([departmentName])
 }

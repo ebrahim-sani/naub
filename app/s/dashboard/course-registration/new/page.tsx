@@ -1,8 +1,8 @@
-import { DataTable } from "@/app/dashboard/course-registration/components/data-table";
 import { CourseProps } from "@/lib/types";
-import { columns } from "@/app/dashboard/course-registration/components/columns";
 import { getCourses } from "@/utils/dataFetch";
 import NewCourseRegHeader from "@/components/NewCourseRegHeader";
+import { DataTable } from "../components/data-table";
+import { columns } from "../components/columns";
 
 export default async function page() {
    const courses: CourseProps[] = await getCourses();
